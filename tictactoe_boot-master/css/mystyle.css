@@ -1,0 +1,303 @@
+
+
+:root {
+  /* Cores principais dos personagens */
+  --cor-fundo: #7136A8;
+  --cor-main: #FFD700;
+  --cor-main-dark: #C49A00;
+  --cor-fonte: rgb(255 255 255);
+  --jogadorX: rgb(100 100 100);
+}
+
+/* Reset das configurações do navegador */
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive;
+  outline: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fundo principal */
+body {
+  background-color: var(--cor-fundo);
+  min-height: 100vh;
+}
+
+/* Barra de navegação */
+.bg-cor-que-eu-quero {
+  background: var(--cor-main);
+}
+
+.navbar-brand {
+  color: #3B1C55;
+}
+
+.navbar-brand:hover {
+  color: #3B1C55;
+}
+
+#navbar-items .navbar-nav {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.navbar-nav a {
+  color: #3B1C55;
+}
+
+.navbar-nav a:hover {
+  color: #7136A8;
+}
+
+/* Menu de contato */
+.dropdown-menu {
+  background-color: var(--cor-main);
+}
+
+.dropdown-item {
+  color: #3B1C55;
+}
+
+/* Títulos */
+#titulo {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+/* Container principal */
+.principal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.principal a {
+  height: 4rem;
+}
+
+#container-top {
+  margin-top: 5rem;
+}
+
+/* Ícones */
+i {
+  font-size: 2.5em;
+  margin: .125em;
+}
+
+/* Tabuleiro */
+.tabuleiro {
+  width: 27rem;
+  height: 27rem;
+  margin: auto;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.celula {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  width: 8rem;
+  height: 8rem;
+  margin: .5rem;
+  box-shadow: .25rem .25rem rgba(0, 0, 0, .3);
+}
+
+/* Botões */
+.btn {
+  border-radius: 0;
+}
+
+/* Carrossel dos jogos favoritos */
+#slider {
+  max-width: 900px;
+  margin: 1em auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+#slider .carousel-item img {
+  display: block;
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  filter: brightness(65%);
+}
+
+#slider .carousel-caption {
+  bottom: 4rem;
+  z-index: 2;
+}
+
+#slider .carousel-caption h5 {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: white;
+  text-shadow: 3px 3px 5px black;
+}
+
+#slider .carousel-caption .btn {
+  height: auto;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+  border: 2px solid #3B1C55;
+  color: #3B1C55;
+  background-color: var(--cor-main);
+}
+
+#slider .carousel-caption .btn:hover {
+  background-color: var(--cor-main-dark);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  opacity: 0.7;
+}
+
+.carousel-control-prev i,
+.carousel-control-next i {
+  color: rgb(233, 229, 229);
+  font-size: 3em;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: rgb(231, 204, 204);
+  opacity: 0.8;
+}
+
+.carousel-indicators .active {
+  background-color: #000;
+}
+
+/* Texto */
+.texto {
+  font-size: 0.75rem;
+  text-align: justify;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+
+  #slider .carousel-caption {
+    bottom: 4rem;
+  }
+
+  #slider .carousel-caption h5 {
+    font-size: 2em;
+    text-shadow: #000 2px 3px;
+  }
+
+  #slider .carousel-caption .btn {
+    padding: 0.6em 1em;
+    font-size: 1em;
+    margin-top: 1em;
+  }
+
+  .carousel-indicators {
+    bottom: 0.25em;
+  }
+}
+
+/* Ajustes para celulares */
+@media (max-width: 767px) {
+
+  #slider .carousel-item img {
+    height: 300px;
+  }
+
+  #slider .carousel-caption {
+    bottom: 2rem;
+  }
+
+  #slider .carousel-caption h5 {
+    font-size: 1.5em;
+  }
+
+  #slider .carousel-caption .btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Imagens dos jogadores dentro das células */
+.celula img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Aviso de vitória ou empate */
+.aviso-resultado {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.88);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.aviso-resultado.mostrar {
+  opacity: 1;
+  visibility: visible;
+}
+
+.aviso-conteudo {
+  width: min(100%, 850px);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  background: #3B1C55;
+  border: 4px solid var(--cor-main);
+  border-radius: 1rem;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.45);
+}
+
+#mensagem-resultado {
+  margin: 0 0 1rem;
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  font-weight: bold;
+  line-height: 1.1;
+  animation: piscar-rgb 1s linear infinite;
+}
+
+.aviso-conteudo p {
+  margin: 0;
+  color: white;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+/* Efeito RGB */
+@keyframes piscar-rgb {
+  0%, 100% {
+    color: #ff3030;
+    text-shadow: 0 0 12px #ff3030, 0 0 28px #ff3030;
+  }
+
+  33% {
+    color: #39ff14;
+    text-shadow: 0 0 12px #39ff14, 0 0 28px #39ff14;
+  }
+
+  66% {
+    color: #00e5ff;
+    text-shadow: 0 0 12px #00e5ff, 0 0 28px #00e5ff;
+  }
+}
+
+@media (max-width: 767px) {
+  .aviso-conteudo {
+    padding: 2rem 1rem;
+  }
+}
